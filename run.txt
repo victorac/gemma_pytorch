@@ -7,3 +7,9 @@ docker run -t --rm --gpus all -v D:/Python/Dev/gemma_pytorch/ckpt:/tmp/ckpt/ gem
 
 docker compose -f .\docker\docker-compose.yml up
 
+await fetch('http://localhost:8000/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },  // Set Content-Type header
+    body: JSON.stringify({content: "My name is Philip. I aws a warrior ever since I have know how to walk. My days were filled with th blood of heretics and tast of alcohool. Recentently I turned a new leaf, now I try to live a peaceful life without giving in to the bloodlust", length: 200})  
+  });
+
