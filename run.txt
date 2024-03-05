@@ -1,0 +1,9 @@
+docker build -f docker/Dockerfile ./ -t gemma
+docker run -t --rm --gpus all -v D:/Python/Dev/gemma_pytorch/ckpt:/tmp/ckpt/ gemma python scripts/run.py --ckpt=/tmp/ckpt/gemma-2b-it.ckpt --variant="2b" --prompt="The meaning of life is" --device="cuda"
+
+docker run -t --rm --gpus all -v D:/Python/Dev/gemma_pytorch/ckpt:/tmp/ckpt/ gemma python scripts/run.py --ckpt=/tmp/ckpt/gemma-2b-it.ckpt --variant="2b" --prompt="Is the following sentence written correctly? How would you rewrite it? 'I walked the path that the dog had went throught.'" --device="cuda"
+
+docker run -t --rm --gpus all -v D:/Python/Dev/gemma_pytorch/ckpt:/tmp/ckpt/ gemma python scripts/run.py --ckpt=/tmp/ckpt/gemma-2b-it.ckpt --variant="2b" --prompt="Can you finish this sentence? I walk a lonely road, the only one..." --device="cuda"
+
+docker compose -f .\docker\docker-compose.yml up
+

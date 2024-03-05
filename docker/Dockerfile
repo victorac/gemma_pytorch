@@ -28,10 +28,8 @@ RUN apt-get install -y --no-install-recommends git
 # Install libraries.
 ENV PIP_ROOT_USER_ACTION=ignore
 RUN python -m pip install --upgrade pip
-RUN pip install fairscale==0.4.13
-RUN pip install numpy==1.24.4
-RUN pip install immutabledict==4.1.0
-RUN pip install sentencepiece==0.1.99
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install from source.
 COPY . /workspace/gemma/

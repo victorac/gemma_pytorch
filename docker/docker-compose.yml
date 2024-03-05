@@ -1,0 +1,20 @@
+services:
+  app:
+    image: gemma:server
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: gemma_server
+    command: uvicorn scripts.server:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - 8000:8000
+    volumes:
+      - D:/Python/Dev/gemma_pytorch/ckpt:/tmp/ckpt/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+

@@ -200,12 +200,7 @@ class GemmaMLP(nn.Module):
         )
 
     def forward(self, x):
-        gate = self.gate_proj(x)
-        gate = F.gelu(gate, approximate="tanh")
-        up = self.up_proj(x)
-        fuse = gate * up
-        outputs = self.down_proj(fuse)
-        return outputs
+        return self.down_proj(F.gelu(self.gate_proj(x)) * self.up_proj(x))
 
 
 class GemmaAttention(nn.Module):
